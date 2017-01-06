@@ -94,7 +94,7 @@ namespace GongSolutions.Wpf.DragDrop.Utilities
       }
       var hit = VisualTreeHelper.HitTest(visual, e.GetPosition((IInputElement)visual));
 
-      if (hit == null) {
+      if (hit == null || visual == hit.VisualHit) {
         return false;
       } else {
         var depObj = e.OriginalSource as DependencyObject;
