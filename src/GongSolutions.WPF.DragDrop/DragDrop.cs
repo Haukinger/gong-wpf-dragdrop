@@ -239,19 +239,6 @@ namespace GongSolutions.Wpf.DragDrop
       target.SetValue(EffectScrollAdornerTemplateProperty, value);
     }
 
-    public static readonly DependencyProperty ManualItemHandlingProperty =
-      DependencyProperty.RegisterAttached( "ManualItemHandling", typeof(bool), typeof(DragDrop));
-
-    public static bool GetManualItemHandling( UIElement target)
-    {
-      return (bool)target.GetValue( ManualItemHandlingProperty );
-    }
-
-    public static void SetManualItemHandling( UIElement target, bool value)
-    {
-      target.SetValue( ManualItemHandlingProperty, value);
-    }
-
     public static readonly DependencyProperty IsDragSourceProperty =
       DependencyProperty.RegisterAttached("IsDragSource", typeof(bool), typeof(DragDrop), new UIPropertyMetadata(false, IsDragSourceChanged));
 
@@ -750,7 +737,7 @@ public static IDragSource DefaultDragHandler
 
       m_DragInfo = new DragInfo(sender, e);
 
-      if (m_DragInfo.VisualSourceItem == null && !GetManualItemHandling(sender as UIElement))
+      if (m_DragInfo.VisualSourceItem == null)
       {
         m_DragInfo = null;
         return;
